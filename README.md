@@ -1,1 +1,0 @@
-# Shiroko-Bot
