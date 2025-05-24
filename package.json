@@ -1,5 +1,5 @@
 {
-  "name": "DestinyBot-MD",
+  "name": "ShirokoBot",
   "version": "1.2.0",
   "description": "Super WhatsApp Bot Multi Device",
   "main": "index.js",
@@ -18,16 +18,16 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/https0J/Destiny-Bot",
+  "homepage": "https://github.com/https0J/Shiroko-Bot",
   "author": {
     "name": "https_(S2)"
   },
   "repository": {
     "type": "git",
-    "url": "githttps://github.com/https0J/Destiny-Bot.git"
+    "url": "githttps://github.com/https0J/Shiroko-Bot.git"
   },
   "bugs": {
-    "url": "https://github.com/https0J/Destiny-Bot/issues"
+    "url": "https://github.com/https0J/Shiroko-Bot/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
