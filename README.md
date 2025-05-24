@@ -1,4 +1,4 @@
-<h1 align="center">✦ Destiny-Bσƚ ✦</h1>
+<h1 align="center">✦ Shiroko-Bσƚ ✦</h1>
 
  <img src= "https://files.catbox.moe/ob1psq.jpg">
     </p>
