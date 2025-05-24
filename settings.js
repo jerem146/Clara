@@ -33,20 +33,20 @@ global.prems = []
 global.libreria = 'Baileys'
 global.baileys = 'V 6.7.16' 
 global.vs = '1.0.0'
-global.nameqr = '𝐃𝐞𝐬𝐭𝐢𝐧𝐲𝐁𝐨𝐭-MD'
-global.namebot = '✿◟𝐃𝐞𝐬𝐭𝐢𝐧𝐲-Bσƚ◞✿'
+global.nameqr = 'Shiroko-bot'
+global.namebot = '✿◟Shiroko-Bσƚ◞✿'
 global.sessions = 'Sessions'
 global.jadi = 'JadiBots' 
-global.yukiJadibts = true
+global.shirokoJadibts = true
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = '⪛✰ 𝐃𝐞𝐬𝐭𝐢𝐧𝐲-𝐛𝐨𝐭 ✰⪜'
-global.botname = '𝐃𝐞𝐬𝐭𝐢𝐧𝐲-𝐛𝐨𝐭'
+global.packname = '⪛✰ Shiroko-Bot ✰⪜'
+global.botname = 'Shiroko-bot'
 global.wm = 'ৎ୭࠭͢𝐃𝐞𝐬𝐭𝐢𝐧𝐲-𝐁𝐨𝐭ⷭ𓆪͟͞ '
 global.author = 'Made By https_(S2)'
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ https_(S2)'
-global.textbot = '𝐃𝐞𝐬𝐭𝐢𝐧𝐲-𝐛𝐨𝐭 • Powered By https_(S2)'
+global.textbot = 'Shiroko-bot • Powered By https_(S2)'
 global.etiqueta = 'https_(S2)'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
