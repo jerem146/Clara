@@ -54,7 +54,7 @@ global.etiqueta = 'https_(S2)'
 global.moneda = '¥enes'
 global.welcom1 = '❍ Edita Con El Comando setwelcome'
 global.welcom2 = '❍ Edita Con El Comando setbye'
-global.banner = 'https://files.catbox.moe/fycjd8.jpg'
+global.banner = 'https://files.catbox.moe/hlrcbi.jpg'
 global.avatar = 'https://files.catbox.moe/pzn79l.jpg'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
