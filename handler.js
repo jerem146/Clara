@@ -175,7 +175,9 @@ chat.antiBot = false
 if (!('antiBot2' in chat))
 chat.antiBot2 = false
 if (!('modoadmin' in chat))                     
-chat.modoadmin = false   
+chat.modoadmin = false
+if (!('antilink2' in chat))
+chat.antilink2 = false
 if (!('antiLink' in chat))
 chat.antiLink = true
 if (!('reaction' in chat))
@@ -206,6 +208,7 @@ gacha: true,
 antiBot: false,
 antiBot2: false,
 modoadmin: false,
+antilink2: false,
 antiLink: true,
 antifake: false,
 reaction: false,
