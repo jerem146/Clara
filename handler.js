@@ -166,7 +166,11 @@ if (!('autoresponder' in chat))
 chat.autoresponder = false
 if (!('detect' in chat))
 chat.detect = true
-if (!('antiBot' in chat))
+if (!('economy' in chat))
+chat.economy = true
+if (!('gacha' in chat))
+chat.gacha = true
+if (!('antiBot' in chat))    
 chat.antiBot = false
 if (!('antiBot2' in chat))
 chat.antiBot2 = false
@@ -182,12 +186,8 @@ if (!('antifake' in chat))
 chat.antifake = false
 if (!('delete' in chat))
 chat.delete = false
-if (!('economy' in chat))
-chat.economy = true
 if (!isNumber(chat.expired))
 chat.expired = 0
-if (!('antiLag' in chat))
-chat.antiLag = false
 if (!('per' in chat))
 chat.per = []
 } else
@@ -201,6 +201,8 @@ delete: false,
 autoAceptar: false,
 autoRechazar: false,
 detect: true,
+economy: true,
+gacha: true,
 antiBot: false,
 antiBot2: false,
 modoadmin: false,
@@ -208,9 +210,7 @@ antiLink: true,
 antifake: false,
 reaction: false,
 nsfw: false,
-economy: true,
-expired: 0, 
-antiLag: false,
+expired: 0,
 per: [],
 }
 var settings = global.db.data.settings[this.user.jid]
@@ -232,14 +232,6 @@ status: 0
 } catch (e) {
 console.error(e)
 }
-const mainBot = global.conn.user.jid
-const chat = global.db.data.chats[m.chat] || {}
-const isSubbs = chat.antiLag === true
-const allowedBots = chat.per || []
-if (!allowedBots.includes(mainBot)) allowedBots.push(mainBot)
-const isAllowed = allowedBots.includes(this.user.jid)
-if (isSubbs && !isAllowed) 
-return
     
 if (opts['nyimak'])  return
 if (!m.fromMe && opts['self'])  return
@@ -251,7 +243,7 @@ let _user = global.db.data && global.db.data.users && global.db.data.users[m.sen
 
 const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const isOwner = isROwner || m.fromMe
-const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+const isMods = isROwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || _user.premium == true
 
 if (opts['queque'] && m.text && !(isMods || isPrems)) {
