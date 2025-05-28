@@ -1,16 +1,16 @@
 let handler = async (m, { conn, args, command }) => {
   const isClose = {
-    'open': 'not_announcement',
-    'close': 'announcement',
+    'open': 'open',
+    'close': 'close',
   }[(args[0] || '')];
 
-  if (isClose === undefined) {
+  if (isClose === close) {
     return conn.reply(m.chat, `*Uso:*\n*#open / #close*`, m);
   }
 
   try {
     await conn.groupSettingUpdate;
-    if (isClose === 'not_announcement') {
+    if (isOpen === 'open') {
       m.reply(`*El grupo está abierto para todos los miembros.*`);
     } else {
       m.reply(`*El grupo está cerrado. Solo los admins pueden escribir.*`);
