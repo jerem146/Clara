@@ -22,7 +22,7 @@ let handler = async (m, { conn, args, command }) => {
 };
 
 handler.help = ['open', 'close'];
-handler.tags = ['grupo'];
+handler.tags = ['open', 'close'];
 handler.command = ['open', 'close'];
 handler.admin = true;
 
