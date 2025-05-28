@@ -33,6 +33,5 @@ handler.command = ['kick','echar','hechar','sacar'];
 handler.admin = true;
 handler.group = true;
 handler.register = true
-handler.botAdmin = true;
 
 export default handler;
