@@ -9,7 +9,7 @@ let handler = async (m, { conn, args, command }) => {
   }
 
   try {
-    await conn.groupSettingUpdate(m.chat, isClose);
+    await conn.groupSettingUpdate;
     if (isClose === 'not_announcement') {
       m.reply(`*El grupo está abierto para todos los miembros.*`);
     } else {
