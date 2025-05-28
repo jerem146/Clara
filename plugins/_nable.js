@@ -220,6 +220,7 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
       chat.antifake = isEnable
       break
 
+      case 'antilinktmp':
       case 'antilinktemporal':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
@@ -238,6 +239,6 @@ const handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, i
 
 handler.help = ['welcome', 'bienvenida', 'antiprivado', 'antiprivate', 'restrict', 'restringir', 'autolevelup', 'autonivel', 'antibot', 'antibots', 'autoaceptar', 'aceptarauto', 'autorechazar', 'rechazarauto', 'autoresponder', 'autorespond', 'antisubbots', 'antibot2', 'modoadmin', 'soloadmin', 'reaction', 'reaccion', 'nsfw', 'modohorny', 'antispam', 'jadibotmd', 'modejadibot', 'subbots', 'detect', 'economy', 'avisos', 'antilink']
 handler.tags = ['nable'];
-handler.command = ['welcome', 'bienvenida', 'antilink2', 'antiprivado', 'antiprivate', 'restrict', 'restringir', 'autolevelup', 'autonivel', 'antibot', 'antibots', 'autoaceptar', 'aceptarauto', 'autorechazar', 'rechazarauto', 'autoresponder', 'autorespond', 'antisubbots', 'antibot2', 'modoadmin', 'soloadmin', 'reaction', 'reaccion', 'nsfw', 'modohorny', 'antispam', 'jadibotmd', 'modejadibot', 'subbots', 'detect', 'economy', 'alertas', 'antilink', 'antifake', 'antilinktemporal']
+handler.command = ['welcome', 'bienvenida', 'antilink2', 'antiprivado', 'antiprivate', 'restrict', 'restringir', 'autolevelup', 'autonivel', 'antibot', 'antibots', 'autoaceptar', 'aceptarauto', 'autorechazar', 'rechazarauto', 'autoresponder', 'autorespond', 'antisubbots', 'antibot2', 'modoadmin', 'soloadmin', 'reaction', 'reaccion', 'nsfw', 'modohorny', 'antispam', 'jadibotmd', 'modejadibot', 'subbots', 'detect', 'economy', 'alertas', 'antilink', 'antifake', 'antilinktmp', 'antilinktemporal']
 
 export default handler
