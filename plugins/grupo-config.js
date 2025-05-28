@@ -21,7 +21,7 @@ m.reply(`${emoji2} *Solos los admins pueden escribir en este grupo.*`)
 }}
 handler.help = ['group open / close', 'grupo abrir / cerrar']
 handler.tags = ['grupo']
-handler.command = ['group', 'grupo']
+handler.command = ['group', 'grupo', 'open', 'close', 'abrir', 'cerrar']
 handler.admin = true
 
 export default handler
