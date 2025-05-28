@@ -180,6 +180,8 @@ if (!('antilink2' in chat))
 chat.antilink2 = false
 if (!('antiLink' in chat))
 chat.antiLink = true
+if (!('antilinktemporal' in chat))
+chat.antilinktemporal = false
 if (!('reaction' in chat))
 chat.reaction = false
 if (!('nsfw' in chat))
@@ -210,6 +212,7 @@ antiBot2: false,
 modoadmin: false,
 antilink2: false,
 antiLink: true,
+antilinktemporal: false,
 antifake: false,
 reaction: false,
 nsfw: false,
