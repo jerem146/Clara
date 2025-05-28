@@ -10,10 +10,8 @@ let handler = async (m, { conn, args, command }) => {
 
   try {
     await conn.groupSettingUpdate(m.chat, isClose);
-    if (command === 'open') {
-      m.reply(`*El grupo está abierto para todos los miembros.*`);
-    } else if (command === 'close') {
-      m.reply(`*El grupo está cerrado. Solo los admins pueden escribir.*`);
+    if (command === 'open') {} 
+    else if (command === 'close') {
     }
   } catch (error) {
     console.error(error);
