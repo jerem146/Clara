@@ -1,18 +1,18 @@
 let handler = async (m, { conn, args, command }) => {
   const isClose = {
-    'open': 'open',
-    'close': 'close',
-  }[(args[0] || '')];
+    'open': 'not_announcement',
+    'close': 'announcement',
+  }[(command || '')];
 
-  if (isClose === close) {
+  if (isClose === undefined) {
     return conn.reply(m.chat, `*Uso:*\n*#open / #close*`, m);
   }
 
   try {
-    await conn.groupSettingUpdate;
-    if (isOpen === 'open') {
+    await conn.groupSettingUpdate(m.chat, isClose);
+    if (command === 'open') {
       m.reply(`*El grupo está abierto para todos los miembros.*`);
-    } else {
+    } else if (command === 'close') {
       m.reply(`*El grupo está cerrado. Solo los admins pueden escribir.*`);
     }
   } catch (error) {
@@ -22,7 +22,7 @@ let handler = async (m, { conn, args, command }) => {
 };
 
 handler.help = ['open', 'close'];
-handler.tags = ['open', 'close'];
+handler.tags = ['group'];
 handler.command = ['open', 'close'];
 handler.admin = true;
 
