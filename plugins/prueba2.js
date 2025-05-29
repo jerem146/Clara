@@ -44,7 +44,7 @@ const handler = async (m, { conn, participants }) => {
 
 handler.help = ['adminprotect'];
 handler.tags = ['group', 'admin'];
-handler.command = ['adminprotect', 'protectadmin'];
+handler.command = ['prueba', 'protectadmin'];
 handler.group = true;
 handler.admin = true;
 handler.botAdmin = true;
