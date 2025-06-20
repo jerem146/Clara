@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, text }) => {
   const chat = global.db.data.chats[m.chat];
   const dev = '𝐂𝐋𝐀𝐑𝐀';
+
   const estilo = {
     key: {
       fromMe: false,
@@ -18,21 +19,33 @@ let handler = async (m, { conn, text }) => {
   };
 
   if (!chat?.welcome) {
-    return m.reply('✎ Las bienvenidas no están activadas. Usa *#welcome* para activarlas.');
+    return m.reply('✎ Las bienvenidas no están activadas.\nUsa *#welcome* para activarlas.');
   }
 
-  if (!text) return m.reply('✎ Debes mencionar a alguien para simular la bienvenida.\nEjemplo: *#testwelcome @user*');
+  if (!text) {
+    return m.reply('✎ Debes mencionar a alguien.\nEjemplo: *#testwelcome @usuario*');
+  }
 
-  let who = conn.parseMention(text)[0];
-  if (!who) return m.reply('✎ No se pudo detectar a quién mencionaste.');
+  const who = conn.parseMention(text)[0];
+  if (!who) {
+    return m.reply('✎ Mención no válida. Asegúrate de etiquetar a un usuario real.');
+  }
 
   const taguser = `@${who.split('@')[0]}`;
   const groupMetadata = await conn.groupMetadata(m.chat);
   const defaultImage = 'https://files.catbox.moe/xr2m6u.jpg';
 
+  // Obtener foto de perfil
+  let pp;
+  try {
+    pp = await conn.profilePictureUrl(who, 'image');
+  } catch (e) {
+    console.log('❌ No se pudo obtener la foto de perfil:', e);
+    pp = defaultImage;
+  }
+
   let img;
   try {
-    const pp = await conn.profilePictureUrl(who, 'image');
     img = await (await fetch(pp)).buffer();
   } catch {
     img = await (await fetch(defaultImage)).buffer();
@@ -62,7 +75,7 @@ let handler = async (m, { conn, text }) => {
   );
 };
 
-handler.help = ['testwelcome @user'];
+handler.help = ['testwelcome @usuario'];
 handler.tags = ['group'];
 handler.command = ['testwelcome'];
 handler.admin = true;
