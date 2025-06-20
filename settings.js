@@ -31,8 +31,8 @@ global.prems = []
 global.libreria = 'Baileys'
 global.baileys = 'V 6.7.16' 
 global.vs = '1.0.0'
-global.nameqr = 'Shiroko-bot'
-global.namebot = '✿◟Shiroko-Bσƚ◞✿'
+global.nameqr = '꧁༺ƈʟǟʀǟ༻꧂'
+global.namebot = 'ƈʟǟʀǟ'
 global.sessions = 'Sessions'
 global.jadi = 'JadiBots' 
 global.shirokoJadibts = true
@@ -45,11 +45,11 @@ global.wm = 'ৎ୭࠭͢𝐃𝐞𝐬𝐭𝐢𝐧𝐲-𝐁𝐨𝐭ⷭ𓆪͟͞ '
 global.author = 'Made By https_(S2)'
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ https_(S2)'
 global.textbot = 'Shiroko-bot • Powered By https_(S2)'
-global.etiqueta = 'https_(S2)'
+global.etiqueta = 'jerem146'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.moneda = '¥enes'
+global.moneda = 'Euros'
 global.welcom1 = '❍ Edita Con El Comando setwelcome'
 global.welcom2 = '❍ Edita Con El Comando setbye'
 global.banner = 'https://files.catbox.moe/twj9b9.png'
