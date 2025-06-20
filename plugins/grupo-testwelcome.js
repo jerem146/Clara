@@ -1,30 +1,65 @@
-import { WAMessageStubType } from '@whiskeysockets/baileys';
 import fetch from 'node-fetch';
 
-let handler = async (m, { conn, usedPrefix, command, text }) => {
-    if (!db.data.chats[m.chat].welcome && m.isGroup) {
-    return m.reply(`${emoji} Para usar este comando debe activar las Bienvenidas con *#welcome*`);
-    }
-    let chat = global.db.data.chats[m.chat];
-    
-    let mentions = text.trim();
-    let who = mentions ? conn.parseMention(mentions) : [];
-    if (!text) return conn.reply(m.chat, `${emoji} Menciona al usuario con @ para simular la bienvenida.`, m);
+let handler = async (m, { conn, text }) => {
+  const chat = global.db.data.chats[m.chat];
+  const dev = '𝐂𝐋𝐀𝐑𝐀';
+  const estilo = {
+    key: {
+      fromMe: false,
+      participant: '0@s.whatsapp.net',
+      remoteJid: 'status@broadcast',
+    },
+    message: {
+      contactMessage: {
+        displayName: 'Sistema Clara',
+        vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:Clara\nTEL;type=CELL;waid=0\nEND:VCARD`,
+      },
+    },
+  };
 
-    let taguser = `@${who[0].split('@')[0]}`;
-    let groupMetadata = await conn.groupMetadata(m.chat);
-    let defaultImage = 'https://files.catbox.moe/npchez.jpg';
+  if (!chat?.welcome) {
+    return m.reply('✎ Las bienvenidas no están activadas. Usa *#welcome* para activarlas.');
+  }
 
-    let img;
-    try {
-        let pp = await conn.profilePictureUrl(who[0], 'image');
-        img = await (await fetch(pp)).buffer();
-    } catch {
-        img = await (await fetch(defaultImage)).buffer();
-    }
+  if (!text) return m.reply('✎ Debes mencionar a alguien para simular la bienvenida.\nEjemplo: *#testwelcome @user*');
 
-    let bienvenida = `❀ *Bienvenido* a ${groupMetadata.subject}\n ✰ ${taguser}\n${global.welcom1}\n •(=^●ω●^=)• Disfruta tu estadía en el grupo!\n> ✐ Puedes usar *#help* para ver la lista de comandos.`;
-    await conn.sendMessage(m.chat, { image: img, caption: bienvenida, mentions: who });
+  let who = conn.parseMention(text)[0];
+  if (!who) return m.reply('✎ No se pudo detectar a quién mencionaste.');
+
+  const taguser = `@${who.split('@')[0]}`;
+  const groupMetadata = await conn.groupMetadata(m.chat);
+  const defaultImage = 'https://files.catbox.moe/xr2m6u.jpg';
+
+  let img;
+  try {
+    const pp = await conn.profilePictureUrl(who, 'image');
+    img = await (await fetch(pp)).buffer();
+  } catch {
+    img = await (await fetch(defaultImage)).buffer();
+  }
+
+  const welcomeMessage = chat.welcomeMessage || '❍ Edita con el comando #setwelcome';
+  const groupSize = groupMetadata.participants.length;
+
+  const mensaje = `╭───────────────➤
+│ ✯ ${dev}
+│ 「 Bienvenido 」
+│ ★ ${taguser}
+│ ${welcomeMessage}
+│ ❁ Grupo: ${groupMetadata.subject}
+│ ❁ Miembros: ${groupSize}
+╰─────────────────⌲
+✎ Usa *#help* para ver los comandos.`;
+
+  await conn.sendMessage(
+    m.chat,
+    {
+      image: img,
+      caption: mensaje,
+      mentions: [who],
+    },
+    { quoted: estilo }
+  );
 };
 
 handler.help = ['testwelcome @user'];
