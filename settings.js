@@ -41,10 +41,10 @@ global.shirokoJadibts = true
 
 global.packname = '꧁༺ƈʟǟʀǟ༻꧂'
 global.botname = 'ƈʟǟʀǟ'
-global.wm = 'ৎ୭࠭͢𝐃𝐞𝐬𝐭𝐢𝐧𝐲-𝐁𝐨𝐭ⷭ𓆪͟͞ '
-global.author = 'Made By https_(S2)'
-global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ https_(S2)'
-global.textbot = 'Shiroko-bot • Powered By https_(S2)'
+global.wm = 'ৎƈʟǟʀǟ-𝐁𝐨𝐭ⷭ𓆪͟͞ '
+global.author = 'Made By jerem146'
+global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ƈʟǟʀǟ'
+global.textbot = 'Powered By ƈʟǟʀǟ'
 global.etiqueta = 'jerem146'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
