@@ -1,9 +1,13 @@
 import { WAMessageStubType } from '@whiskeysockets/baileys';
 import fetch from 'node-fetch';
 
-let dev = '𝐂𝐋𝐀𝐑𝐀 | 𝐁𝐎𝐓'; // Nombre del bot
-let fkontak = {
-  key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast' },
+let dev = '𝐂𝐋𝐀𝐑𝐀 | 𝐁𝐎𝐓';
+let estilo = {
+  key: {
+    fromMe: false,
+    participant: '0@s.whatsapp.net',
+    remoteJid: 'status@broadcast',
+  },
   message: {
     contactMessage: {
       displayName: 'Sistema Clara',
@@ -15,59 +19,68 @@ let fkontak = {
 export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return true;
 
-  let pp;
+  const who = m.messageStubParameters[0];
+  const taguser = `@${who.split('@')[0]}`;
+  const chat = global.db.data.chats[m.chat];
+  const defaultImage = 'https://files.catbox.moe/xr2m6u.jpg';
+
+  let img;
   try {
-    pp = await conn.profilePictureUrl(m.messageStubParameters[0], 'image');
-  } catch (error) {
-    console.error("Error al obtener la foto de perfil:", error);
-    pp = 'https://files.catbox.moe/xr2m6u.jpg';
+    const pp = await conn.profilePictureUrl(who, 'image');
+    img = await (await fetch(pp)).buffer();
+  } catch {
+    img = await (await fetch(defaultImage)).buffer();
   }
 
-  let img = await (await fetch(pp)).buffer();
-  let chat = global.db.data.chats[m.chat];
-  let taguser = `@${m.messageStubParameters[0].split('@')[0]}`;
   let groupSize = participants.length;
+  if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) groupSize++;
+  if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE || m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) groupSize--;
 
-  if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
-    groupSize++;
-  } else if (
-    m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE ||
-    m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE
-  ) {
-    groupSize--;
-  }
-
-  let welcomeMessage = global.welcom1 || '¡Disfruta tu estadía!';
-  let byeMessage = global.welcom2 || '¡Esperamos verte pronto!';
+  const welcomeMessage = global.welcom1 || '❍ Edita Con El Comando setwelcome';
+  const byeMessage = global.welcom2 || '❍ Edita Con El Comando setbye';
 
   if (chat?.welcome && m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
-    let bienvenida = `┏╼★ ${dev}
-┋「 Bienvenido 」
-┗╼★ 「 ${taguser} 」
- ┋❖ ${welcomeMessage}
- ┋❀ Grupo: ${groupMetadata.subject}
- ┋❀ Miembros: ${groupSize}
- ┗━━━━━━━━━━━━━━━┅ ⳹
-> ✐ Usa *#help* para ver los comandos.`;
+    const bienvenida = `╭───────────────➤
+│ ✯ ${dev}
+│ 「 Bienvenido 」
+│ ★ ${taguser}
+│ ${welcomeMessage}
+│ ❁ Grupo: ${groupMetadata.subject}
+│ ❁ Miembros: ${groupSize}
+╰─────────────────⌲
+✎ Usa *#help* para ver los comandos.`;
 
-    await conn.sendMini(m.chat, 'ゲ◜៹ New Member ៹◞ゲ', dev, bienvenida, img, img, fkontak);
+    await conn.sendMessage(
+      m.chat,
+      {
+        image: img,
+        caption: bienvenida,
+        mentions: [who],
+      },
+      { quoted: estilo }
+    );
   }
 
-  if (
-    chat?.welcome &&
-    (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE ||
-      m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE)
-  ) {
-    let despedida = `┏╼★ ${dev}
-┋「 ADIÓS 👋 」
-┗╼★ 「 ${taguser} 」
- ┋❖ ${byeMessage}
- ┋❀ Grupo: ${groupMetadata.subject}
- ┋❀ Miembros: ${groupSize}
- ┗━━━━━━━━━━━━━━━┅ ⳹
-> © ${dev}`;
+  if (chat?.welcome && (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE || m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE)) {
+    const despedida = `╭───────────────➤
+│ ✯ ${dev}
+│ 「 Adiós 👋 」
+│ ★ ${taguser}
+│ ${byeMessage}
+│ ❁ Grupo: ${groupMetadata.subject}
+│ ❁ Miembros: ${groupSize}
+╰─────────────────⌲
+© ${dev}`;
 
-    await conn.sendMini(m.chat, 'ゲ◜៹ Bye Member ៹◞ゲ', dev, despedida, img, img, fkontak);
+    await conn.sendMessage(
+      m.chat,
+      {
+        image: img,
+        caption: despedida,
+        mentions: [who],
+      },
+      { quoted: estilo }
+    );
   }
 
   return true;
