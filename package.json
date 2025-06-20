@@ -18,7 +18,7 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/https0J/Shiroko-Bot",
+  "homepage": "https://github.com/jerem146/Clara",
   "author": {
     "name": "jerem146"
   },
