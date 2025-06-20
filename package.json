@@ -20,14 +20,14 @@
   },
   "homepage": "https://github.com/https0J/Shiroko-Bot",
   "author": {
-    "name": "https_(S2)"
+    "name": "jerem146"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jerem146/Clara.git"
   },
   "bugs": {
-    "url": "https://github.com/https0J/Shiroko-Bot/issues"
+    "url": "https://github.com/jerem146/Clara/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
