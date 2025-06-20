@@ -21,7 +21,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
   const who = m.messageStubParameters[0];
   const taguser = `@${who.split('@')[0]}`;
-  const chat = global.db.data.chats[m.chat];
+  const chat = global.db.data.chats[m.chat] || {};
   const defaultImage = 'https://files.catbox.moe/xr2m6u.jpg';
 
   let img;
@@ -34,12 +34,16 @@ export async function before(m, { conn, participants, groupMetadata }) {
 
   let groupSize = participants.length;
   if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) groupSize++;
-  if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE || m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) groupSize--;
+  if (
+    m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE ||
+    m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE
+  ) groupSize--;
 
-  const welcomeMessage = global.welcom1 || '❍ Edita Con El Comando setwelcome';
-  const byeMessage = global.welcom2 || '❍ Edita Con El Comando setbye';
+  // ✅ Aquí usamos los mensajes personalizados por grupo
+  const welcomeMessage = chat.welcomeMessage || '❍ Edita con el comando #setwelcome';
+  const byeMessage = chat.byeMessage || '❍ Edita con el comando #setbye';
 
-  if (chat?.welcome && m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
+  if (chat.welcome && m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
     const bienvenida = `╭───────────────➤
 │ ✯ ${dev}
 │ 「 Bienvenido 」
@@ -61,7 +65,11 @@ export async function before(m, { conn, participants, groupMetadata }) {
     );
   }
 
-  if (chat?.welcome && (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE || m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE)) {
+  if (
+    chat.welcome &&
+    (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE ||
+      m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE)
+  ) {
     const despedida = `╭───────────────➤
 │ ✯ ${dev}
 │ 「 Adiós 👋 」
