@@ -1,7 +1,7 @@
 import { WAMessageStubType } from '@whiskeysockets/baileys';
 import fetch from 'node-fetch';
 
-let dev = '𝐂𝐋𝐀𝐑𝐀 | 𝐁𝐎𝐓';
+let dev = '𝐂𝐋𝐀𝐑𝐀';
 let estilo = {
   key: {
     fromMe: false,
