@@ -39,8 +39,8 @@ global.shirokoJadibts = true
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = '⪛✰ Shiroko-Bot ✰⪜'
-global.botname = 'Shiroko-bot'
+global.packname = '꧁༺ƈʟǟʀǟ༻꧂'
+global.botname = 'ƈʟǟʀǟ'
 global.wm = 'ৎ୭࠭͢𝐃𝐞𝐬𝐭𝐢𝐧𝐲-𝐁𝐨𝐭ⷭ𓆪͟͞ '
 global.author = 'Made By https_(S2)'
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ https_(S2)'
