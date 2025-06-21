@@ -35,12 +35,16 @@ let handler = async (m, { conn, text }) => {
   const groupMetadata = await conn.groupMetadata(m.chat);
   const defaultImage = 'https://files.catbox.moe/xr2m6u.jpg';
 
-  // Obtener foto de perfil del usuario
+  // Obtener foto de perfil solo si el número existe en WhatsApp
   let pp;
   try {
-    pp = await conn.profilePictureUrl(who, 'image');
-  } catch (e) {
-    console.log('❌ No se pudo obtener la foto de perfil:', e);
+    const exists = await conn.onWhatsApp(who);
+    if (!exists || !exists[0]?.exists) {
+      pp = defaultImage;
+    } else {
+      pp = await conn.profilePictureUrl(who, 'image');
+    }
+  } catch {
     pp = defaultImage;
   }
 
