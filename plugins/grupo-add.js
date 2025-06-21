@@ -1,33 +1,30 @@
 let handler = async (m, { conn, command, text, participants }) => {
   const emoji = '✅'
   const emoji2 = '⚠️'
-
   const cleanNumber = txt => txt.replace(/[^\d]/g, '')
-
   let user
 
-  // Obtener número del mensaje citado o texto
+  // Obtener número del texto o mensaje citado
   if (m.quoted) {
     user = m.quoted.sender
   } else if (text) {
-    if (text.includes('+')) return conn.reply(m.chat, `${emoji2} *Ingrese el número sin el signo "+" ni espacios.*`, m)
-    if (isNaN(text)) return conn.reply(m.chat, `${emoji2} *Ingrese solo números válidos.*`, m)
+    if (text.includes('+')) return conn.react(m.chat, '❌', m.key)
+    if (isNaN(text)) return conn.react(m.chat, '❌', m.key)
     user = `${cleanNumber(text)}@s.whatsapp.net`
   } else {
-    return conn.reply(m.chat, `${emoji2} *Responda un mensaje o escriba el número del usuario.*`, m)
+    return conn.react(m.chat, '❌', m.key)
   }
 
   if (['add', 'agregar', 'añadir'].includes(command)) {
-    // Verifica si ya está en el grupo
     const isInGroup = participants.some(p => p.id === user)
-    if (isInGroup) return conn.reply(m.chat, `${emoji2} *El usuario ya está en el grupo.*`, m)
+    if (isInGroup) return conn.react(m.chat, '⚠️', m.key)
 
     try {
       await conn.groupParticipantsUpdate(m.chat, [user], 'add')
-      m.reply(`${emoji} *Usuario agregado correctamente al grupo.*`)
+      await conn.react(m.chat, '✅', m.key)
     } catch (e) {
       console.error(e)
-      conn.reply(m.chat, `${emoji2} *No se pudo agregar al usuario. Puede tener restricciones de privacidad o no usar WhatsApp.*`, m)
+      await conn.react(m.chat, '❌', m.key)
     }
   }
 
@@ -37,16 +34,14 @@ let handler = async (m, { conn, command, text, participants }) => {
       const inviteLink = `https://chat.whatsapp.com/${code}`
 
       await conn.sendMessage(user, {
-        text: `📩 *Has sido invitado al grupo por @${m.sender.split('@')[0]}*\n\n🔗 Enlace de invitación:\n${inviteLink}\n\n✨ ¡Te esperamos!`,
+        text: `📩 *Has sido invitado al grupo por @${m.sender.split('@')[0]}*\n\n🔗 Enlace de invitación:\n${inviteLink}`,
         mentions: [m.sender]
       })
 
-      m.reply(`${emoji} *Invitación enviada a @${user.split('@')[0]}*`, null, {
-        mentions: [user]
-      })
+      await conn.react(m.chat, '✅', m.key)
     } catch (e) {
       console.error(e)
-      conn.reply(m.chat, `${emoji2} *No se pudo enviar la invitación. Verifique si el número es válido y está en WhatsApp.*`, m)
+      await conn.react(m.chat, '❌', m.key)
     }
   }
 }
