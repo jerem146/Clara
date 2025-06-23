@@ -24,6 +24,6 @@ handler.help = ['heal'];
 handler.tags = ['rpg'];
 handler.command = ['heal', 'curar']
 handler.group = true;
-handler.register = true;
+handler.register = false;
 
 export default handler;
