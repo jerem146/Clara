@@ -25,6 +25,6 @@ handler.help = ['retirar']
 handler.tags = ['rpg']
 handler.command = ['withdraw', 'retirar', 'with']
 handler.group = true
-handler.register = true
+handler.register = false
 
 export default handler
