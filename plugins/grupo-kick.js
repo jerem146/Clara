@@ -32,6 +32,6 @@ handler.tags = ['grupo'];
 handler.command = ['kick','echar','hechar','sacar'];
 handler.admin = true;
 handler.group = true;
-handler.register = true
+handler.register = false
 
 export default handler;
