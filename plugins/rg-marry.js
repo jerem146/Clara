@@ -348,7 +348,7 @@ handler.command = ['marry', "divorce", 'divorciarse'];
 
 handler.group = true; 
 
-handler.register = true; 
+handler.register = false; 
 
 
 
