@@ -38,8 +38,8 @@ handler.help = ["terabox *<url>*"];
 handler.tags = ["dl"];
 handler.command = ['terabox', 'tb'];
 handler.group = true;
-handler.register = true;
-handler.coin = 5;
+handler.register = false;
+handler.coin = 0;
 
 export default handler;
 
